@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 )
 
 type postgres struct {
@@ -59,7 +58,7 @@ func (s *postgres) DataTypeOf(field *StructField) string {
 				sqlType = "text"
 			}
 		case reflect.Struct:
-			if _, ok := dataValue.Interface().(time.Time); ok {
+			if _, ok := dataValue.Interface().(Time); ok {
 				sqlType = "timestamp with time zone"
 			}
 		case reflect.Map:
